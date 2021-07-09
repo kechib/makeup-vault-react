@@ -10,6 +10,13 @@ import SignIn from './components/SignIn/SignIn'
 import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
 
+// Importing the profile pages components
+// import Home from './components/Home/Home'
+import CreateReviews from './components/Reviews/CreateReviews'
+import ShowReviews from './components/Reviews/ShowReviews'
+import IndexReviews from './components/Reviews/IndexReviews'
+// import EditReviews from './components/Reviews/EditReviews'
+
 class App extends Component {
   constructor (props) {
     super(props)
@@ -65,6 +72,20 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
+          <AuthenticatedRoute user={user} path='/reviews/create' render={() => (
+            <CreateReviews msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/reviews' render={() => (
+            <IndexReviews msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} path='/reviews/:id' render={() => (
+            <ShowReviews msgAlert={this.msgAlert} user={user} clearReviews={this.clearReviews} />
+          )} />
+          {/*
+
+          // <AuthenticatedRoute user={user} path='/reviews/:id' render={() => (
+          //   <EditReviews msgAlert={this.msgAlert} user={user} setReviews={this.setReviews} />
+          // )} /> */}
         </main>
       </Fragment>
     )
