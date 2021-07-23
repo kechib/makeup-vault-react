@@ -27,11 +27,11 @@ class ReviewCreate extends Component {
   handleSubmit = event => {
     event.preventDefault()
 
-    const { user, msgAlert } = this.props
+    const { user, msgAlert, setReview } = this.props
     const { review } = this.state
 
     // create a review, pass it the review data and the user for its token
-    createReview(review, user)
+    createReview(user, review)
       // set the createdId to the id of the review we just created
       // .then(res => this.setState({ createdId: res.data.review._id }))
       .then(res => {
@@ -39,6 +39,7 @@ class ReviewCreate extends Component {
         // pass the response to the next .then so we can show the title
         return res
       })
+      .then(res => setReview(res.data.review))
       .then(res => msgAlert({
         heading: 'Created Review Successfully',
         message: 'Review has been created successfully. We hear you!',
@@ -82,7 +83,7 @@ class ReviewCreate extends Component {
     // if the review has been created and we set its id
     if (created) {
       // redirect to the reviews show page
-      return <Redirect to={`/reviews/${review._id}`} />
+      return <Redirect to={'/reviews'} />
     }
 
     return (

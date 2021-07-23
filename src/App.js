@@ -10,25 +10,33 @@ import SignIn from './components/SignIn/SignIn'
 import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
 
-// Importing the profile pages components
+// Importing the review pages components
 // import Home from './components/Home/Home'
-import CreateReviews from './components/Reviews/CreateReviews'
+import ReviewCreate from './components/Reviews/CreateReviews'
 import ShowReviews from './components/Reviews/ShowReviews'
 import IndexReviews from './components/Reviews/IndexReviews'
-// import EditReviews from './components/Reviews/EditReviews'
+import EditReviews from './components/Reviews/EditReviews'
 
 class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
       user: null,
+      review: null,
       msgAlerts: []
     }
   }
+  setReview = review => this.setState({ review })
+
+   // Combining setUser and setReview to avoid rendering twice and not having
+   // the review data ready.
+   setUserReview = data => this.setState({ user: data.user, review: data.review })
 
   setUser = user => this.setState({ user })
 
   clearUser = () => this.setState({ user: null })
+
+  clearReview = () => this.setState({ review: null })
 
   deleteAlert = (id) => {
     this.setState((state) => {
@@ -44,11 +52,11 @@ class App extends Component {
   }
 
   render () {
-    const { msgAlerts, user } = this.state
+    const { msgAlerts, user, review } = this.state
 
     return (
       <Fragment>
-        <Header user={user} />
+        <Header user={user} review={review}/>
         {msgAlerts.map(msgAlert => (
           <AutoDismissAlert
             key={msgAlert.id}
@@ -60,6 +68,17 @@ class App extends Component {
           />
         ))}
         <main className="container">
+          { /*
+          <Route exact path='/' render={() => (
+           <Home
+              msgAlert={this.msgAlert}
+              user={user}
+              setUser={this.setUser}
+              setReview={this.setReview}
+              setUserReview={this.setUserReview}
+            />
+        )} /> */}
+
           <Route path='/sign-up' render={() => (
             <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
@@ -72,20 +91,19 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
-          <AuthenticatedRoute user={user} path='/reviews/create' render={() => (
-            <CreateReviews msgAlert={this.msgAlert} user={user} />
+          <AuthenticatedRoute user={user} path='/review/create' render={() => (
+            <ReviewCreate msgAlert={this.msgAlert} user={user} setReview={this.setReview} />
           )} />
           <AuthenticatedRoute user={user} exact path='/reviews' render={() => (
-            <IndexReviews msgAlert={this.msgAlert} user={user} />
+            <IndexReviews msgAlert={this.msgAlert} user={user}/>
           )} />
           <AuthenticatedRoute user={user} path='/reviews/:id' render={() => (
-            <ShowReviews msgAlert={this.msgAlert} user={user} clearReviews={this.clearReviews} />
+            <ShowReviews msgAlert={this.msgAlert} user={user} clearReview={this.clearReview} />
           )} />
-          {/*
 
-          // <AuthenticatedRoute user={user} path='/reviews/:id' render={() => (
-          //   <EditReviews msgAlert={this.msgAlert} user={user} setReviews={this.setReviews} />
-          // )} /> */}
+          <AuthenticatedRoute user={user} path='/reviews/:title' render={() => (
+            <EditReviews msgAlert={this.msgAlert} user={user} setReview={this.setReview} />
+          )} />
         </main>
       </Fragment>
     )

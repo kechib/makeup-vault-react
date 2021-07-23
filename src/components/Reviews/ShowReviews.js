@@ -1,9 +1,11 @@
 import React, { Component, Fragment } from 'react'
 
 // Import withRouter to have access to "history"
-import { withRouter, Redirect, Link } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
+import ListGroupItem from 'react-bootstrap/ListGroupItem'
+import ListGroup from 'react-bootstrap/ListGroup'
 
 import Spinner from 'react-bootstrap/Spinner'
 import { showReview, deleteReview } from '../../api/reviews'
@@ -41,10 +43,10 @@ class ReviewShow extends Component {
   }
 
   handleDelete = event => {
-    const { user, msgAlert, clearReview } = this.props
+    const { user, match, msgAlert, clearReview } = this.props
 
     // make a delete axios request
-    deleteReview(user)
+    deleteReview(match.params.id, user)
       // set the deleted variable to true, to redirect to the reviewss page in render
       .then(() => this.setState({ deleted: true }))
       .then(() => msgAlert({
@@ -85,22 +87,32 @@ class ReviewShow extends Component {
     const buttonsJsx = (
       <div>
         <Button className='primary' variant="primary" onClick={this.handleDelete}>Delete Review</Button>
-        <Button className='primary' variant="primary">
-          <Link to={'/review/edit'}>Update Review</Link>
-        </Button>
+        {/*  // <Button className='primary' variant="primary">
+        //   <Link to={`/reviews/${review.title}`} key={review._id}>Update Review</Link>
+        //
+        // </Button> */}
       </div>
     )
 
     return (
       <Fragment>
         <div className="displayReview">
+          <Card.Header>
+        Your Review Summary
+          </Card.Header>
           <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" className="img-size" src={review.avatar} />
+            {/* // <Card.Img variant="top" className="img-size" src={review.avatar} /> */}
             <Card.Body>
               <Card.Title><h3>Title: {review.title}</h3></Card.Title>
               <Card.Text>
-                Your review summary.
+                <h3>Your Description: {review.description}</h3>
               </Card.Text>
+              <ListGroup className="list-group-flush">
+                <ListGroupItem><h3>Product Name: {review.product}</h3></ListGroupItem>
+                <ListGroupItem><h3> Company Name: {review.company}</h3></ListGroupItem>
+                <ListGroupItem><h3>Your Hearts: {review.rating}</h3></ListGroupItem>
+                <ListGroupItem><h3>Did you recommend?: {review.recommend}</h3></ListGroupItem>
+              </ListGroup>
               { user._id === review.owner && buttonsJsx }
             </Card.Body>
           </Card>
