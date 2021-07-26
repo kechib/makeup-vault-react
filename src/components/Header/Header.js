@@ -4,29 +4,30 @@ import Navbar from 'react-bootstrap/Navbar'
 
 const authenticatedOptions = (
   <Fragment>
-    <Nav.Link href="#change-password">Change Password</Nav.Link>
-    <Nav.Link href="#sign-out">Sign Out</Nav.Link>
-    <Nav.Link href="#review/create">Create Reviews</Nav.Link>
-    <Nav.Link href="#reviews">All Your Reviews</Nav.Link>
+    <Nav.Link className="nav-link" href="#change-password">Change Password</Nav.Link>
+    <Nav.Link className="nav-link" href="#sign-out">Sign Out</Nav.Link>
+    <Nav.Link className="nav-link" href="#review/create">Create Reviews</Nav.Link>
+    <Nav.Link className="nav-link" href="#reviews">See Your Reviews</Nav.Link>
+    <Nav.Link className="nav-link" href="#product-reviews">All Reviews</Nav.Link>
   </Fragment>
 )
 
 const unauthenticatedOptions = (
   <Fragment>
-    <Nav.Link href="#sign-up">Sign Up</Nav.Link>
-    <Nav.Link href="#sign-in">Sign In</Nav.Link>
+    <Nav.Link className="nav-link" href="#sign-up">Sign Up</Nav.Link>
+    <Nav.Link className="nav-link" href="#sign-in">Sign In</Nav.Link>
   </Fragment>
 )
 
 const alwaysOptions = (
   <Fragment>
-    <Nav.Link href="#/">Home</Nav.Link>
+    <Nav.Link className="nav-link" href="#/">Home</Nav.Link>
   </Fragment>
 )
 
 const Header = ({ user }) => (
   <Navbar bg="primary" variant="dark" expand="md">
-    <Navbar.Brand href="#">
+    <Navbar.Brand className="brand" href="#">
       The Makeup Vault
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />

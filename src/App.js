@@ -10,11 +10,15 @@ import SignIn from './components/SignIn/SignIn'
 import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
 
+import './App.scss'
+
 // Importing the review pages components
-// import Home from './components/Home/Home'
+import Home from './components/Home/Home'
 import ReviewCreate from './components/Reviews/CreateReviews'
 import ShowReviews from './components/Reviews/ShowReviews'
+import ProductShow from './components/Reviews/ShowProduct'
 import IndexReviews from './components/Reviews/IndexReviews'
+import ProductIndex from './components/Reviews/AllReviews'
 import EditReviews from './components/Reviews/EditReviews'
 
 class App extends Component {
@@ -68,16 +72,16 @@ class App extends Component {
           />
         ))}
         <main className="container">
-          { /*
+
           <Route exact path='/' render={() => (
-           <Home
+            <Home
               msgAlert={this.msgAlert}
               user={user}
               setUser={this.setUser}
               setReview={this.setReview}
               setUserReview={this.setUserReview}
             />
-        )} /> */}
+          )} />
 
           <Route path='/sign-up' render={() => (
             <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
@@ -97,8 +101,14 @@ class App extends Component {
           <AuthenticatedRoute user={user} exact path='/reviews' render={() => (
             <IndexReviews msgAlert={this.msgAlert} user={user}/>
           )} />
+          <AuthenticatedRoute user={user} exact path='/product-reviews' render={() => (
+            <ProductIndex msgAlert={this.msgAlert} user={user}/>
+          )} />
           <AuthenticatedRoute user={user} path='/reviews/:id' render={() => (
             <ShowReviews msgAlert={this.msgAlert} user={user} clearReview={this.clearReview} />
+          )} />
+          <AuthenticatedRoute user={user} path='/product-reviews/:product' render={() => (
+            <ProductShow msgAlert={this.msgAlert} user={user} clearReview={this.clearReview} />
           )} />
 
           <AuthenticatedRoute user={user} path='/reviews/:title' render={() => (

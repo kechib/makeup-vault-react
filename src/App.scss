@@ -1,0 +1,180 @@
+@import '~bootstrap/scss/bootstrap';
+$body: #f2cee6;
+$stroke: #625de0;
+$shadow: #e483cc;
+$size: 4rem;
+$halftone: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAAHElEQVQYV2NUVFT8f//+fUYGBgYGMAEDcA5IBQCKJQVmn76DhAAAAABJRU5ErkJggg==");
+
+@mixin stroke-width($property) {
+	-webkit-text-stroke-width: $property;
+	-moz-text-stroke-width: $property;
+}
+
+@mixin stroke-color($property) {
+	-webkit-text-stroke-color: $property;
+	-moz-text-stroke-color: $property;
+}
+
+@mixin background-clip($property) {
+	-webkit-background-clip: $property;
+	-moz-background-clip: $property;
+	background-clip: $property;
+}
+
+@mixin fill-color($property) {
+	-webkit-text-fill-color: $property;
+	-moz-text-fill-color: $property;
+}
+body {
+	background-color: $body;
+	padding: 5px;
+	text-align: center;
+  background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3v-_4vHYKwXqYwRpK0Bf4h-s7tY4_B1wN5g&usqp=CAU);
+  // -webkit-background-size: cover;
+  // -moz-background-size: cover;
+  // -o-background-size: cover;
+  // background-size: cover;
+
+}
+
+.grid {
+	// display: grid;
+	// grid-template-columns: 1fr;
+	// grid-gap: 1rem;
+	@media screen and (min-width: 768px) {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+.heading {
+	font-size: $size;
+	letter-spacing: 6px;
+	margin: 0;
+
+	&--stroke {
+		@include stroke-width(2px);
+		@include stroke-color($stroke);
+		color: transparent;
+	}
+
+	&--shadow {
+		text-shadow: 6px 6px $shadow;
+	}
+
+	&--stroke-shadow {
+		color: $body;
+		text-shadow: -2px 0 $stroke, 0 -2px $stroke, 2px 0 $stroke, 0 2px $stroke,
+			2px 2px $stroke, -2px -2px $stroke, -2px 2px $stroke, 2px -2px $stroke,
+			6px 6px $shadow;
+	}
+
+	&--halftone {
+		position: relative;
+
+		&:after {
+			background: $halftone repeat;
+			@include stroke-width(0);
+			@include background-clip(text);
+			@include fill-color(transparent);
+			font-size: $size;
+			letter-spacing: 6px;
+			left: calc(50% + 6px);
+			top: calc(50% + 6px);
+			content: "Hello";
+			z-index: -1;
+			position: absolute;
+			transform: translate(-50%, -50%);
+		}
+
+		&-color {
+			&:after {
+				background-color: $shadow;
+			}
+		}
+	}
+}
+@import url('https://fonts.googleapis.com/css?family=Roboto:700');
+
+body {
+  margin:0px;
+  font-family:'Roboto';
+  text-align:center;
+  background: url(https://static.vecteezy.com/system/resources/previews/002/150/235/original/colorful-hand-drawn-make-up-background-vector.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#containerHome {
+  color:#999;
+  text-transform: uppercase;
+  font-size:36px;
+  font-weight:bold;
+  padding-top:200px;
+  position:fixed;
+  width:100%;
+  bottom:45%;
+  display:block;
+}
+
+#flip {
+  height:50px;
+  overflow:hidden;
+}
+
+#flip > div > div {
+  color:#fff;
+  padding:4px 12px;
+  height:45px;
+  margin-bottom:45px;
+  display:inline-block;
+}
+
+#flip div:first-child {
+  animation: show 5s linear infinite;
+}
+
+#flip div div {
+  background:#42c58a;
+}
+#flip div:first-child div {
+  background:#4ec7f3;
+}
+#flip div:last-child div {
+  background:#DC143C;
+}
+
+@keyframes show {
+  0% {margin-top:-270px;}
+  5% {margin-top:-180px;}
+  33% {margin-top:-180px;}
+  38% {margin-top:-90px;}
+  66% {margin-top:-90px;}
+  71% {margin-top:0px;}
+  99.99% {margin-top:0px;}
+  100% {margin-top:-270px;}
+}
+img.makeup1 {
+        position: absolute;
+        left: 160px;
+}
+.bg-primary {
+        background-color: black ;
+}
+// .navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus {
+//         color: #ed495b;
+// }
+// .nav-link {
+//   color: white;
+//   &:hover {
+//     color: #fee334;
+//   }
+//   // &:focus {
+//   //   color: #ed495b;
+//   // }
+// }
+.bg-primary {
+        /* background-color: #007bff !important; */
+        background-color: #ffffff10 !important;
+}

@@ -22,11 +22,9 @@ export const indexReviews = (user) => {
     }
   })
 }
-
-export const getOneReview = (review, user) => {
-  // console.log(review)
+export const indexProduct = (user) => {
   return axios({
-    url: apiUrl + '/review/',
+    url: apiUrl + '/product-reviews',
     method: 'GET',
     headers: {
       'Authorization': `Bearer ${user.token}`
@@ -37,6 +35,15 @@ export const getOneReview = (review, user) => {
 export const showReview = (id, user) => {
   return axios({
     url: apiUrl + '/reviews/' + id,
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${user.token}`
+    }
+  })
+}
+export const showProduct = (product, user) => {
+  return axios({
+    url: apiUrl + '/product-reviews/' + product,
     method: 'GET',
     headers: {
       'Authorization': `Bearer ${user.token}`
