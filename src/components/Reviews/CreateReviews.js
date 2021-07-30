@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { Redirect } from 'react-router-dom'
-
+import Button from 'react-bootstrap/Button'
 import { createReview } from '../../api/reviews'
 import ReviewForm from './ReviewForm'
 
@@ -95,6 +95,9 @@ class ReviewCreate extends Component {
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
         />
+        <Button className='primary' variant="primary" type="submit">
+          Create Review
+        </Button>
       </Fragment>
     )
   }

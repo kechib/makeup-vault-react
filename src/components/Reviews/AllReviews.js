@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import React, { Fragment, Component } from 'react'
+// import { Link } from 'react-router-dom'
 
 import Spinner from 'react-bootstrap/Spinner'
 import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
+import CardDeck from 'react-bootstrap/CardDeck'
+// import Button from 'react-bootstrap/Button'
 import { indexProduct } from '../../api/reviews'
 
 class ProductIndex extends Component {
@@ -38,6 +39,7 @@ class ProductIndex extends Component {
   render () {
     // destructure our reviews state
     const { reviews } = this.state
+    const { user } = this.props
 
     // if we haven't fetched any reviews yet from the API
     if (!reviews) {
@@ -51,19 +53,32 @@ class ProductIndex extends Component {
     }
 
     const reviewsJsx = reviews.map(review => (
-      <Link to={`/product-reviews/${review.product}`} key={review._id} >
-        <Button className="w-100" variant="primary">
-          {review.product}
-        </Button>
-      </Link>
-    ))
+      <Fragment key={review._id}>
+        <CardDeck >
 
+          <Card >
+
+            { /* // <Card.Img variant="top" className="img-size" src={review.avatar} /> */}
+            <Card.Body>
+              <Card.Title><h3>Title: {review.title}</h3></Card.Title>
+              <Card.Text>Product Name: {review.product}</Card.Text>
+
+              <Card.Text>Description: {review.description}</Card.Text>
+              <Card.Text>Company Name: {review.company}</Card.Text>
+              <Card.Text>Your Hearts: {review.rating}</Card.Text>
+              <Card.Text>Did you recommend?: {review.recommend}</Card.Text>
+            </Card.Body>
+            <Card.Footer>{user._id === reviews.owner}</Card.Footer>
+          </Card>
+        </CardDeck>
+      </Fragment>
+    ))
     return (
       <div className="index">
-        <h3>Products</h3>
         <Card>
-          <Card.Title>See All Product Reviews</Card.Title>
+          <Card.Header>See All Product Reviews</Card.Header>
           <Card.Body>{reviewsJsx}</Card.Body>
+
         </Card>
       </div>
     )

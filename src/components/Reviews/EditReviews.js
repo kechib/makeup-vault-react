@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter, Redirect } from 'react-router-dom'
 import ReviewForm from './ReviewForm.js'
-
+import Button from 'react-bootstrap/Button'
 import { updateReview } from '../../api/reviews'
 
 class EditReviews extends Component {
@@ -68,6 +68,9 @@ class EditReviews extends Component {
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
         />
+        <Button className='primary' variant="primary" type="submit">
+          Update Review
+        </Button>
       </div>
     )
   }

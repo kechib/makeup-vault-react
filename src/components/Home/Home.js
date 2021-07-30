@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+// import ProductIndex from '../Reviews/AllReviews'
 // import Button from 'react-bootstrap/Button'
 // import { Link } from 'react-router-dom'
 // import makeupIcon from './makeup1.png'
@@ -21,7 +22,6 @@ const Home = ({ user }) => {
   const authorizedJsx = (
     <Fragment>
       <div style={authBodyStyle}></div>
-
     </Fragment>
   )
   const unauthorizedJsx = (

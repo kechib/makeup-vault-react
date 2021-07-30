@@ -1,6 +1,6 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+
 // import ReactStars from 'react-rating-stars-component'
 // import brush from './brush.png'
 
@@ -101,9 +101,7 @@ const ReviewForm = ({ review, handleSubmit, handleChange }) => (
         <option>No</option>
       </Form.Control>
     </Form.Group>
-    <Button className='primary' variant="primary" type="submit">
-      Submit Review
-    </Button>
+
   </Form>
 )
 export default ReviewForm

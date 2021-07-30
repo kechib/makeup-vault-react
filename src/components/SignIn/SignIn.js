@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
 import { signIn } from '../../api/auth'
+import { indexProduct } from '../../api/reviews'
 import messages from '../AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
@@ -24,10 +25,13 @@ class SignIn extends Component {
   onSignIn = event => {
     event.preventDefault()
 
-    const { msgAlert, history, setUser } = this.props
-
+    const { msgAlert, history, setUserReview } = this.props
+    const userReviewData = {}
     signIn(this.state)
-      .then(res => setUser(res.data.user))
+      .then(res => { userReviewData.user = res.data.user })
+      .then(res => indexProduct(userReviewData.user))
+      .then(res => { userReviewData.review = res.data.review })
+      .then(res => setUserReview(userReviewData))
       .then(() => msgAlert({
         heading: 'Sign In Success',
         message: messages.signInSuccess,

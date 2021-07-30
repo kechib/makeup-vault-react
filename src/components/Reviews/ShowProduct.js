@@ -97,10 +97,17 @@ class ProductShow extends Component {
           <Card style={{ width: '18rem' }}>
             { /* // <Card.Img variant="top" className="img-size" src={review.avatar} /> */}
             <Card.Body>
-              <Card.Title><h3>Product Name: {review.product}</h3></Card.Title>
+              <Card.Title><h3>Title: {review.title}</h3></Card.Title>
               <Card.Text>
                 Your review overview.
               </Card.Text>
+              <Card.Text>Product Name: {review.product}</Card.Text>
+
+              <Card.Text>Description: {review.description}</Card.Text>
+              <Card.Text>Company Name: {review.company}</Card.Text>
+              <Card.Text>Your Hearts: {review.rating}</Card.Text>
+              <Card.Text>Did you recommend?: {review.recommend}</Card.Text>
+
               { user._id === review.owner && buttonsJsx }
             </Card.Body>
           </Card>

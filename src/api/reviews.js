@@ -51,6 +51,16 @@ export const showProduct = (product, user) => {
   })
 }
 
+// export const getUserReview = (user) => {
+//   return axios({
+//     url: apiUrl + '/review',
+//     method: 'GET',
+//     headers: {
+//       'Authorization': `Bearer ${user.token}`
+//     }
+//   })
+// }
+
 export const updateReview = (title, user, review) => {
   // console.log('id is ' + id)
   // console.log('user token is ' + user.token)

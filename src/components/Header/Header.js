@@ -1,14 +1,23 @@
 import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
+import NavDropdown from 'react-bootstrap/NavDropdown'
 import Navbar from 'react-bootstrap/Navbar'
 
 const authenticatedOptions = (
   <Fragment>
-    <Nav.Link className="nav-link" href="#change-password">Change Password</Nav.Link>
-    <Nav.Link className="nav-link" href="#sign-out">Sign Out</Nav.Link>
-    <Nav.Link className="nav-link" href="#review/create">Create Reviews</Nav.Link>
-    <Nav.Link className="nav-link" href="#reviews">See Your Reviews</Nav.Link>
     <Nav.Link className="nav-link" href="#product-reviews">All Reviews</Nav.Link>
+    <NavDropdown title="Account Options" id="navbarScrollingDropdown">
+
+      <NavDropdown.Item href="#change-password">Change Password</NavDropdown.Item>
+      <NavDropdown.Divider />
+      <NavDropdown.Item href="#sign-out">Sign Out</NavDropdown.Item>
+    </NavDropdown>
+    <NavDropdown title="Review Menu" id="navbarScrollingDropdown">
+
+      <NavDropdown.Item href="#review/create">Create Reviews</NavDropdown.Item>
+      <NavDropdown.Item href="#reviews">See Your Reviews</NavDropdown.Item>
+    </NavDropdown>
+
   </Fragment>
 )
 
