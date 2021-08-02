@@ -1,10 +1,30 @@
 @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&family=Lobster&family=Open+Sans&family=Oswald&family=Questrial&family=Raleway:ital@1&family=Style+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&family=Lato&family=Lobster&family=Open+Sans&family=Oswald&family=Questrial&family=Raleway:ital@1&family=Style+Script&display=swap');
 $body: #f2cee6;
 $stroke: #625de0;
 $shadow: #e483cc;
 $size: 4rem;
 $halftone: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAAHElEQVQYV2NUVFT8f//+fUYGBgYGMAEDcA5IBQCKJQVmn76DhAAAAABJRU5ErkJggg==");
 
+// variables
+$darkSlate: #2f2e31;
+$pink:
+#f8cdcc;
+$yellow: #fcdc95;
+$activeBlue: #9fe6f8;
+$white: #ffffff;
+$lightPink: #fbe4e3;
+$sandyBrown:
+#f6b14b;
+$dimgray: #6b6c71;
+
+// mixins
+@mixin box-shadow($top, $left, $blur, $color, $inset:"") {
+    -webkit-box-shadow:$top $left $blur $color #{$inset};
+    -moz-box-shadow:$top $left $blur $color #{$inset};
+    box-shadow:$top $left $blur $color #{$inset};
+}
 @mixin stroke-width($property) {
 	-webkit-text-stroke-width: $property;
 	-moz-text-stroke-width: $property;
@@ -34,6 +54,7 @@ body {
   // -moz-background-size: cover;
   // -o-background-size: cover;
   // background-size: cover;
+	color: $darkSlate;
 
 }
 
@@ -97,13 +118,16 @@ body {
 
 body {
   margin:0px;
-  font-family:'Roboto';
   text-align:center;
-  background: url(https://static.vecteezy.com/system/resources/previews/002/150/235/original/colorful-hand-drawn-make-up-background-vector.jpg) no-repeat center center fixed;
+  // background: url(https://static.vecteezy.com/system/resources/previews/002/150/235/original/colorful-hand-drawn-make-up-background-vector.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+font-family: 'Lato', sans-serif;
+// font-family: 'Raleway', sans-serif;
+// font-family: 'Style Script', cursive;
+  background: url(https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX25180626.jpg);
 }
 
 #containerHome {
@@ -176,5 +200,165 @@ img.makeup1 {
 // }
 .bg-primary {
         /* background-color: #007bff !important; */
-        background-color: #ffffff10 !important;
+        // background-color: #ffffff10 !important;
+        background-color: $pink !important;
+				// color: $yellow;
+				color: $dimgray;
+}
+.navbar-dark .navbar-brand {
+        color: #2f2e31;
+				font-family: 'Lobster', cursive;
+				font-size: 50px;
+				font-weight: bold;
+}
+.navbar-dark .navbar-nav .nav-link {
+        color: $darkSlate;
+				font-size: x-large;
+        font-weight: bolder;
+}
+
+
+
+
+
+
+// banner styles
+.banner {
+  height: auto;
+  margin: 32px 0px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  @media (min-width: 768px) {
+    height: 450px;
+    margin-bottom: 32px;
+  }
+  .banner-image {
+    position: absolute;
+    opacity: .25;
+    right: 0px;
+    top: 0px;
+    height: 150px;
+    z-index: -1;
+
+      @media (min-width: 768px) {
+        display: inherit;
+        height: 400px;
+        top: 0px;
+        opacity: 0.5;
+      }
+    @media (min-width: 992px) {
+        height: 450px;
+        top: -50px;
+      opacity: 1;
+        background-color: #555;
+    box-shadow: 0 0 5px 10px $activeBlue;
+      right: 3px;
+      top: 5px;
+      }
+    }
+
+  .banner-text {
+    max-width: 550px;
+    // float: right 25px;
+		position: absolute;
+		background: url("https://thumbs.dreamstime.com/b/abstract-geometrical-pastel-background-water-misty-rose-colors-watercolor-paper-texture-abstract-geometrical-pastel-133214442.jpg");
+		box-shadow: 0 0 5px 10px $pink;
+    h1 {
+      color: $darkSlate;
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      margin-bottom: 1rem;
+    }
+    p {
+      color: $darkSlate;
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+		left: -75px;
+		top: 145px;
+  }
+  button {
+  border: 0;
+  border-radius: 50px;
+  padding: .75rem 2.75rem;
+  background: $activeBlue;
+  color: $white;
+  box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.25);
+  cursor: pointer;
+  position: relative;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    -webkit-transform: translateY(-5px);
+  -ms-transform: translateY(-5px);
+  -o-transform: translateY(-5px);
+  transform: translateY(-5px);
+    box-shadow: 0 1rem 1.5rem rgba(0,0,0,.25);
+  }
+}
+}
+
+// card styles
+.mb-30 {
+  margin-bottom: 30px;
+}
+.card {
+  padding: 16px 24px;
+  background: $white;
+  height: 100%;
+  position: relative;
+  border: none;
+  box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.15);
+  border: 2px solid transparent;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  z-index: 10;
+  h3.card-title {
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: $darkSlate;
+  }
+  p {
+    color: $dimgray;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 72px;
+  }
+  .card-link {
+    position: absolute;
+    bottom: 18px;
+  }
+  &:hover {
+    -webkit-transform: translateY(-5px);
+  -ms-transform: translateY(-15px);
+  -o-transform: translateY(-15px);
+  transform: translateY(-15px);
+    box-shadow: 0 1rem 1.5rem rgba(0,0,0,.15);
+    cursor: pointer;
+  }
+  .card-icon {
+    margin-bottom: 8px;
+    position: relative;
+    // top: 0;
+    // left: -12px;
+  }
+}
+.Featured-Heading {
+	font-weight: bolder;
+}
+label {
+        display: inline-block;
+        margin-bottom: 0.5rem;
+        font-size: x-large;
+				font-weight: bolder;
 }
