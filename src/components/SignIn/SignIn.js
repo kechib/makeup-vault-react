@@ -80,7 +80,7 @@ class SignIn extends Component {
                   onChange={this.handleChange}
                 />
               </Form.Group>
-              <Button
+              <Button className="auth-button"
                 variant="primary"
                 type="submit"
               >

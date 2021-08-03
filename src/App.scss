@@ -355,10 +355,42 @@ img.makeup1 {
 }
 .Featured-Heading {
 	font-weight: bolder;
+	background-color: $lightPink;
+	box-shadow: 0 0 5px 10px $yellow;
 }
 label {
         display: inline-block;
         margin-bottom: 0.5rem;
         font-size: x-large;
 				font-weight: bolder;
+}
+.login.container {
+	background: url(https://www.freevector.com/uploads/vector/preview/30546/Pastel_Background_vector_5.jpg);
+	background-size: cover;
+        background-color: pink;
+        height: 500px;
+        width: 1200px;
+				box-shadow: 0 0 5px 10px $pink;
+			}
+
+@media (min-width: 1200px) {
+
+.container {
+        max-width: 1140px;
+}
+}
+button.auth-button {
+
+        height: 60px;
+        width: 180px;
+				background-color: $activeBlue;
+				color: $darkSlate;
+				&:hover {
+					background-color: $lightPink;
+				}
+}
+span.navbar-text.mr-2 {
+        font-size: x-large;
+        font-weight: bolder;
+				color: $darkSlate;
 }
