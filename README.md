@@ -8,7 +8,7 @@ The Makeup Vault is a recreation of [Makeup Vault CLI](https://github.com/kechib
 
 Use the package manager [npm](https://www.npmjs.com/) to install Journal Mia dependecies.
 
-{% include codeHeader.html %}
+<!-- {% include codeHeader.html %} -->
 ```bash
 npm install
 ```
@@ -80,8 +80,8 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 | PATCH  | `/reviews-title/`         | `reviewsupdate`|
 | DELETE | `/reviews/:id`            | `reviewsdestroy`|
 
-## WireFrames
-![ERD](./erd.png)
+<!-- ## WireFrames
+![ERD](./erd.png) -->
 
 ## License
 
